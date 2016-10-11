@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>助管信息录入系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-static-top nav-header" role="navigation">
+        <div class="container">
+            <div class="navbar-left">
+                <a href="./index.html">助管信息录入系统</a>
+            </div>
+            <div class="navbar-right mt-10">
+                <a class="btn btn-default">登录</a>
+            </div>
+        </div>
+    </nav>
+    <div id="layout-container" class="container-fluid content">
+        <div class="nav-logo mb-10">
+            <a class="navbar-brand " href="http://www.uestc.edu.cn/">
+                <img alt="Brand" src="img/logo.png">
+            </a>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="span6">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">管理员功能</li>
+                        <li><a  v-on:click="ijump('./subform-buzhu.html')"> 补助信息管理</a></li>
+                        <li><a v-on:click="ijump('./subform-zhuguan.html')"> 助管信息管理</a></li>
+                        <li><a v-on:click="ijump('./subform-dept.html')">学院信息管理</a></li>
+                        <li class="active"><a v-on:click="ijump('./subform-month.html')">日期与金额管理</a></li>
+                        <li class="nav-header">学院用户</li>
+                        <li><a href=""> 申请助管补助</a></li>
+                        <li><a href="#"> 功能二</a></li>
+                        <li class="nav-header">学生</li>
+                        <li><a href=""> 查看补助</a></li>
+                        <li class="divider">
+                            <hr>
+                        </li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <iframe v-bind:src="url" src="" frameborder="0" scrolling="yes"></iframe>
+            </div>
+        </div>
+    </div>
+    <footer class="navbar navbar-default navbar-footer mt-20">
+        <div style="clear:both"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8" style="margin-top:10px;">
+                    <div>
+                        <p>
+                            清水河校区: 成都市高新区（西区）西源大道2006号 &nbsp; 邮编:&nbsp;611731 &nbsp;&nbsp;</p>
+                        <p>
+                            沙河校区: 成都市建设北路二段四号 &nbsp; 邮编:&nbsp;610054</p>
+                        <p>
+                            蜀ICP备&nbsp;05006379&nbsp;号&nbsp;&nbsp;&nbsp;I　川公网安备&nbsp;51019002000280&nbsp;号&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+<script type="text/javascript" src="js/dist/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="js/dist/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/dist/vue.js"></script>
+<script type="text/javascript" src="js/layout.js"></script>
+
+</html>

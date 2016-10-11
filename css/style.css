@@ -1,0 +1,128 @@
+html,body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-logo {
+    width: 100%;
+    height: 50px;
+    position: relative;
+}
+
+.nav-logo a {
+    width: 100%;
+    height: 100%;
+    line-height: 50px;
+    display: inline-block;
+    position: absolute;
+    padding: 0px;
+}
+
+.nav-logo img {
+    height: 50px;
+    display: inline-block;
+    position: relative;
+}
+
+.navbar-left {
+    height: 50px;
+    line-height: 50px;
+}
+
+.navbar-left a {
+    color: #fff;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+.mt-20{
+    margin-top: 20px;
+}
+.mb-10 {
+    margin-bottom: 10px;
+}
+
+.nav-header {
+    background: #563d7c;
+}
+
+.right {
+    float: right;
+}
+/*index.html*/
+.index-panel .panel{
+    height: 200px;
+}
+.cnt-mid{
+    text-align: center;
+}
+.cnt-mid-head{
+    width: 100%;
+    height: 50px;
+    border-bottom:4px solid #563d7c;
+    font-size: 14px;
+    font-weight: bolder;
+    line-height: 50px;
+}
+.cnt-mid-img{
+    height: 100px;
+    line-height: 100px;
+}
+.cnt-mid-btn{
+    width: 100%;
+}
+.cnt-mid-btn  button{
+    width: 80%;
+}
+.cnt-mid .panel{
+    background: #F7F7F9;
+    border:0px solid #563d7c;
+    box-shadow: 10px 10px 5px #888888;
+}
+/*index-sec2*/
+.cnt-sec2-head{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #563d7c;
+}
+.cnt-sec2-info{
+    margin-top: 20px;
+}
+/*month.html*/
+.form-btn {
+    float: right;
+    margin-right: 10px;
+}
+
+.form-option .form-control {
+    width: 70%;
+    display: inline-block;
+}
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media screen and (min-width:1280px){
+    .content{
+        min-height: 778px;
+    }
+}
+@media screen and (max-width:1280px){
+    .content{
+        min-height: 600px;
+    }
+}
+.nav-header{
+    color: #fff;
+}
+/*layout*/
+iframe{
+    width: 100%;
+    min-height: 600px;
+}
+.nav-list .nav-header{
+    text-indent: 1em;
+}
+.nav-list .active{
+    border-bottom: 2px solid #563d7c;
+}

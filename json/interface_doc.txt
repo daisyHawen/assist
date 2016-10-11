@@ -1,0 +1,98 @@
+添加补助信息
+
+查询补助信息
+URL：
+POST(JSON)
+Parameter{
+  "stuId":"201421060216",
+  "name":"李丽"
+}
+Result:{
+  "stuId":"201421060216",
+  "name":"李丽",
+  "szdw":"学工部",--所在单位
+  "ks":"学院科",--所在科室
+  "bank":"建设银行",--银行名称
+  "creditNum":"5423424235452",--银行卡号
+  "tel":"1823423132",--联系电话
+}
+
+添加补助信息（待审核）
+URL:http://localhost:8080/stu_assist_management/usr/buzhu/add.do
+POST(JSON)
+Parameter:{	
+	"helpDate":"2015/03", --补助年月
+	"deptId":"001",  --学院编号
+	"stuId":"201421060216",  --学号
+	"szlbdm":10,  
+	"shztm":1,
+	"remark":"buzhu",  --备注
+	"money":400  --金额
+}
+Result:{
+  "message": "成功",
+  "status": 1
+}
+
+提交补助信息，进入审核
+http://localhost:8080/stu_assist_management/usr/buzhu/submit.do
+POST(URL)
+Parameter:{
+    "buzhuList":1,2,3  --待提交的记录主键id,以,分割
+}
+Result:{
+  "message": "成功",
+  "status": 1
+}
+删除补助信息
+URL:http://localhost:8080/stu_assist_management/usr/buzhu/remove.do
+POST(URL)
+Parameter:{
+    "id":1
+}
+Result:{
+  "message": "成功",
+  "status": 1
+}
+
+--------------------------------------------------------------------------
+添加年月
+URL:http://localhost:8080/stu_assist_management/usr/date/add.do
+POST(JSON)
+Parameter:{
+    "helpYear":2015,  --补助年
+    "helpMonth":12  --补助月
+}
+Result:{
+  "message": "成功",
+  "status": 1
+}
+删除年月
+URL:http://localhost:8080/stu_assist_management/usr/date/remove.do
+POST(URL)
+Parameter:{
+    "id":1
+}
+Result:{
+  "message": "成功",
+  "status": 1
+}
+获取所有有效年月
+URL:http://localhost:8080/stu_assist_management/usr/date/getAll.do
+GET
+Result:{
+  "body": [
+    {
+      "helpMonth": 9,
+      "helpYear": 2015,
+      "id": 1
+    },
+    {
+      "helpMonth": 12,
+      "helpYear": 2015,
+      "id": 3
+    }
+  ],
+  "message": "成功",
+  "status": 1
+}

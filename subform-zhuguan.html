@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <title>添加助管信息</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="zhuguan-data" class="container">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="col-sm-3">
+                            <input v-model="query.stuID" type="text" class="form-control" placeholder="学号">
+                        </div>
+                        <div class="col-sm-3">
+                            <input v-model="query.name" type="text" class="form-control" placeholder="姓名">
+                        </div>
+                        <div class="col-sm-3">
+                            <select v-model="query.bankNo" class="form-control" name="bank">
+                                <option v-bind:value="bank.bankNo" v-for="bank in banks">{{ bank.bankName }}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <select v-model="query.deptNo" class="form-control" name="dept">
+                                <option v-bind:value="dept.deptNo" v-for="dept in depts">{{ dept.deptName }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-default" v-on:click="queryData">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">助管信息列表</div>
+            <div class="panel-body">
+                <table class="table table-bordered mt-10">
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>学院编号</th>
+                        <th>学院名称</th>
+                        <th>科室名称</th>
+                        <th>联系电话</th>
+                        <th>银行名称</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr v-for="item in items" track-by="$index">
+                        <td>{{item.stuId}}</td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.deptId}}</td>
+                        <td>{{item.deptName}}</td>
+                        <td>{{item.creditNum}}</td>
+                        <td>{{item.tel}}</td>
+                        <td>{{item.bankName}}</td>
+                        <td>
+                            <button class="btn btn-default" data-toggle="modal" data-target="#myModal-delete" v-on:click="deleteZG(item.stuId,item.name)">删除</button>
+                        </td>
+                    </tr>
+                </table>
+                <button class="btn btn-default" data-toggle="modal" data-target="#myModal-add">添加</button>
+                <nav>
+                    <ul class="pagination">
+                        <li v-bind:class="{'disabled': page.disabled, 'active': page.active }" v-for="page in pages"><a v-on:click="submitPage(page.content)">{{page.content}}</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- 删除模态框（Modal） -->
+        <div class="modal fade" id="myModal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">删除助管信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>确认删除学生：{{deleteItem.name}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" v-on:click="confirmDel()" class="btn btn-primary">提交更改</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
+        <!-- 添加模态框 -->
+        <div class="modal fade" id="myModal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">添加助管信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <label for="">学号：</label>
+                        <input v-model="addItem.stuID" type="text" class="form-control" placeholder="">
+                        <label for="">姓名：</label>
+                        <input v-model="addItem.name" type="text" class="form-control" placeholder="">
+                        <label for="">学院：</label>
+                        <select v-model="addItem.deptNo" class="form-control" name="dept">
+                            <option v-bind:value="dept.deptNo" v-for="dept in depts">{{ dept.deptName }}</option>
+                        </select>
+                        <label for="">学院：</label>
+                        <select v-model="addItem.bankNo" class="form-control" name="bank">
+                            <option v-bind:value="bank.bankNo" v-for="bank in banks">{{ bank.bankName }}</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" v-on:click="addZhuguan" class="btn btn-primary">添加</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal -->
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/dist/jquery-2.2.4.js"></script>
+<script type="text/javascript" src="js/dist/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/dist/vue.js"></script>
+<script type="text/javascript" src="js/zhuguan.js"></script>
+
+</html>

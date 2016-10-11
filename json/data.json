@@ -1,0 +1,21 @@
+[{
+    "date_create": "2015-11-12T00:00:00",
+    "date_modify": "2015-11-12T00:00:00",
+    "id": 1,
+    "year": 2016,
+    "month": 12,
+    "name": "张三",
+    "department": "计算机学院",
+    "salary": 300,
+    "number": 2011050060020
+}, {
+    "date_create": "2015-11-12T00:00:00",
+    "date_modify": "2015-11-12T00:00:00",
+    "id": 2,
+    "year": 2016,
+    "month": 10,
+    "name": "李四",
+    "department": "通信学院",
+    "salary": 360,
+    "number": 2011050060670
+}]
